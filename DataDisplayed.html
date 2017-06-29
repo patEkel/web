@@ -23,7 +23,7 @@
 			font-sizedf:1.8em;
 		}
 		#topContainer{
-			background-image:url("images/medianIncome.png");
+			background-image:url("images/Earth's_City_light.jpg");
 			height:400px;
 			width:100%;
 			background-size:cover;
@@ -38,7 +38,6 @@
 		#emailSignup{
 			margin-top:50px;
 		}
-
 		.bold{
 			font-weight:bold;	
 		}
@@ -66,6 +65,7 @@
 
 	</style>
 </head>
+
 <body data-spy="scroll" data-target=".navbar-collapse">
 <div class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
@@ -113,14 +113,19 @@
 			</div>
 		</div>
 		<div class="container contentContainer" id="details">
-			<div class="row" class ="center">
+			<div class="row" id ="center">
 				<h1 class="center title"> H! header tag</h1>
 				<p class="lead center"> P following H1 tag</p>
 			</div>
 			<div class="row marginBotton">
-				<div class ="col-md-4" marginTop">
-				<h2><span class="glyphicon glyphicon-music"></span>Header</h2>
-				<p> Desction here following h2 tag, probaly a larger area and more toext thean h1.</p>
+				<div class ="col-md-4" marginTop>
+				<h2><span class="glyphicon glyphicon-music"></span>U.S. Overlayed</h2>
+				<p class="center"><img src="images/medianIncome.png" class="imageHolder"></p>
+				</div>
+				<div class="accordionF">
+					<h3><a href ="#">Sub twwooooo</a></h3>
+					<p> THIS SHOULD GO AWAY</p>
+				</div>
 				<button class="btn btn-success marginTop">Sign UP!!</button>
 				</div>
 				<div class="col-md-4 marginTop">
@@ -130,11 +135,10 @@
 				</div>
 				<div class="col-md-4 marginTop">
 				<h2><span class="glyphicon glyphicon-pencil"></span>Headerr</h2>
-				<p>Another fuckn desctipooinoin ...</p>
+				<p>Another test desctipooinoin ...</p>
 				<button class="btn btn-success margintTop">Sign Up!@##</button>
 				</div>
-			</div>
-		</div>
+			</div>	
 		<div class="container contentContainer" id="footer">
 			<div class="row">
 				<h1 class="center title">Downloaddd sheeet</h1>
@@ -144,13 +148,17 @@
 		</div>
 
 		    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	    
+		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
 		    <!-- Include all compiled plugins (below), or include individual files as needed -->
-		    <script src="js/bootstrap.min.js"></script>	    	    
+		    <script src="js/bootstrap.min.js"></script>
 		    <script>
 		       	$(".contentContainer").css("min-height",$(window).height());
 		    </script>
+		   	<script>
+		     $(".accordionF").accordion();
+			</script>
+
 		   </body>
 		</html>
 

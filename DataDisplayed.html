@@ -62,11 +62,50 @@
 		.imageHolder{
 			width:250px;
 		}
+		 /* Style the buttons that are used to open and close the accordion panel */
+		button.accordion {
+    		background-color: #eee;
+    		color: #444;
+    		cursor: pointer;
+    		padding: 18px;
+    		width: 20px;
+    		text-align: left;
+		    border: none;
+    		outline: none;
+    		transition: 0.4s;
+		}
+		button.accordion:after {
+    		content: '\02795'; /* Unicode character for "plus" sign (+) */
+    		font-size: 13px;
+    		color: #777;
+    		float: right;
+    		margin-left: 5px;
+		}
+
+		button.accordion.active:after {
+    		content: "\2796"; /* Unicode character for "minus" sign (-) */
+		}
+
+		/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+		button.accordion.active, button.accordion:hover {
+    		background-color: #ddd;
+		}
+
+		/* Style the accordion panel. Note: hidden by default */
+		div.panel {
+    	padding: 0 18px;
+    	background-color: white;
+    	max-height: 0;
+    	width:20px;
+    	overflow: hidden;
+    	transition: max-height 0.2s ease-out;
+		} 
 
 	</style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar-collapse">
+<!--Navbar-->
 <div class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -95,6 +134,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- top level container-->
 		<div class="container contentContainer" id="topContainer">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3" id="topRow">
@@ -112,33 +152,43 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Lower Content-->
 		<div class="container contentContainer" id="details">
-			<div class="row" id ="center">
+		<!--title-->
+			<div class="topRow" id ="center">
 				<h1 class="center title"> H! header tag</h1>
 				<p class="lead center"> P following H1 tag</p>
 			</div>
+
 			<div class="row marginBotton">
-				<div class ="col-md-4" marginTop>
-				<h2><span class="glyphicon glyphicon-music"></span>U.S. Overlayed</h2>
+			
+				<div class="col-md-4 marginTop">
+					<h2></span>Header ONE</h2>
+					<p class="center"><img src="images/medianIncome.png" class="imageHolder"></p>
+				
+				<button class="accordion">CODES</button>
+				<div class="panel">
+					<p>should be hidden but theNE IG SHOHFDNFMN DF DSKJFBKJSDNFJKNDSKJFNSDKJNFKJSDNFKJNSDKJFNSDKJNFKJSDNFKSJDNFKJSDNFKJNSDKJFNSDKJNFKJSDNFKJSDJNFKJNSDKJFNSDKJNFKJDSFN</p>
+				</div>
+			</div>
+
+
+				<div class="col-md-4 marginTop">
+				<h2>Header TWO</h2>
 				<p class="center"><img src="images/medianIncome.png" class="imageHolder"></p>
+				<button class="accordion">CODES</button>
+				<div class="panel">
+					<p>should be hidden but theNE IG SHOHFDNFMN DF DSKJFBKJSDNFJKNDSKJFNSDKJNFKJSDNFKJNSDKJFNSDKJNFKJSDNFKSJDNFKJSDNFKJNSDKJFNSDKJNFKJSDNFKJSDJNFKJNSDKJFNSDKJNFKJDSFN</p>
 				</div>
-				<div class="accordionF">
-					<h3><a href ="#">Sub twwooooo</a></h3>
-					<p> THIS SHOULD GO AWAY</p>
-				</div>
-				<button class="btn btn-success marginTop">Sign UP!!</button>
-				</div>
-				<div class="col-md-4 marginTop">
-				<h2><span class="glyphicon glyphicon-off"></span>Header two?</h2>
-				<p> Another brief description? h2? </p>
-				<button class="btn btn-success marginTop">Sign Up..</button>
-				</div>
-				<div class="col-md-4 marginTop">
-				<h2><span class="glyphicon glyphicon-pencil"></span>Headerr</h2>
-				<p>Another test desctipooinoin ...</p>
-				<button class="btn btn-success margintTop">Sign Up!@##</button>
-				</div>
-			</div>	
+			</div>
+
+
+			</div>
+			</div>
+
+
+		<!-- Foooter -->		
 		<div class="container contentContainer" id="footer">
 			<div class="row">
 				<h1 class="center title">Downloaddd sheeet</h1>
@@ -146,6 +196,12 @@
 				<p class="center"><img src="images/threeVar.png" class="imageHolder"></p>
 			</div>
 		</div>
+
+
+
+
+
+
 
 		    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -156,8 +212,25 @@
 		       	$(".contentContainer").css("min-height",$(window).height());
 		    </script>
 		   	<script>
-		     $(".accordionF").accordion();
-			</script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+ 		   acc[i].onclick = function(){
+ 	       /* Toggle between adding and removing the "active" class,
+    	    to highlight the button that controls the panel */
+        	this.classList.toggle("active");
+
+        	/* Toggle between hiding and showing the active panel */
+        	var panel = this.nextElementSibling;
+  		  if (panel.style.maxHeight){
+      		panel.style.maxHeight = null;
+    		} else {
+      		panel.style.maxHeight = panel.scrollHeight + "px";
+    		} 
+    		}
+		}
+		 	</script>
 
 		   </body>
 		</html>

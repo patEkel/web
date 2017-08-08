@@ -39,6 +39,9 @@
         .bold {
             font-weight: bold;
         }
+        .green{
+        	color: green;
+        }
 
         .marginTop {
             margin-top: 30px;
@@ -126,7 +129,7 @@
                 <button class="navbar-toggle" data-type="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                   	<span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand">Data Displayed</a>
             </div>
@@ -170,23 +173,26 @@
         <!--title-->
         <div class="topRow" id="center">
             <h1 class="center title">Map Overlays</h1>
-            <p class="lead center">details</p>
+            <p class="lead left">&nbsp&nbsp;&nbsp;&nbsp&nbsp;One of the strengths of the R programming language is the amount of packages that are readily available. <br> One such package that is great for data visualizations is ggplot2. Below...  </p>
         </div>
 
         <!-- ggplot -->
         <div class="row marginBotton">
             <!--column_1-->
             <div class="col-md-4 marginTop">
-                <h2>Header ONE</h2>
+                <h2>Average Income</h2>
                 <p class="center"><img src="images/US_Mean_.15.png" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
-                    <p>
+                    <div class= bold>
                         library(RCurl)<br>
                         library(xlsx)<br>
                         library(zipcode)<br>
                         library(ggmap)<br>
-                        library(ggplot2)<br>
+                        library(ggplot2)</div>
+                        <div class = green>
+                         # load file from URL</div>
+						<div class= bold>
                         urlfile <-'http://www.psc.isr.umich.edu/dis/census/Features/tract2zip/MedianZIP-3.xlsx'<br>
                         destfile <- "census20062010.xlsx"<br>
                         download.file(urlfile, destfile, mode="wb")<br>
@@ -200,18 +206,19 @@
                         head(census)<br>
                         data("zipcode")<br>
                         census$Zip <- clean.zipcodes(census$Zip)<br>
-                        census <- merge(census, zipcode, by.x='Zip', by.y='zip')<br>
-                        head(census)<br>
+                        census <- merge(census, zipcode, by.x='Zip', by.y='zip')</div>
+                        <div class= green>
+                        # Set map as US</div>
+                        <div class = bold>
                         map<-get_map(location='united states', zoom=4, maptype = "terrain", source='google',color='color')<br>
                         print(head(census,5))<br>
-                        ggmap(map) + geom_point(aes(x=longitude, y=latitude, show_guide = TRUE, colour=Median),data=census, alpha=.15, na.rm = T)  +  scale_color_gradient(low="beige", high="blue")<br>
-                    </p>
+                        ggmap(map) + geom_point(aes(x=longitude, y=latitude, show_guide = TRUE, colour=Median),data=census, alpha=.15, na.rm = T)  +  scale_color_gradient(low="beige", high="blue")</div>
                 </div>
             </div>
 
             <!--column_2-->
             <div class="col-md-4 marginTop">
-                <h2>Header TWO</h2>
+                <h2>Life Expectancy by State</h2>
                 <p class="center"><img src="images/US_States_Life_Expectancy.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel" style="">
@@ -236,7 +243,7 @@
             </div>
             <!--column_3-->
             <div class="col-md-4 marginTop">
-                <h2>Header THREE</h2>
+                <h2>Life Expectancy by County</h2>
                 <p class="center"><img src="images/US_Counties_Life_Expectancy.png" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
@@ -273,7 +280,7 @@
         <div class="row marginBotton">
             <!--column_1-->
             <div class="col-md-4 marginTop">
-                <h2>Header ONE</h2>
+                <h2>Scatter Plot</h2>
                 <p class="center"><img src="images/Baseball.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
@@ -293,7 +300,7 @@
             </div>
             <!--column_2-->
             <div class="col-md-4 marginTop">
-                <h2>Header TWO</h2>
+                <h2>Paralell Plot</h2>
                 <p class="center"><img src="images/Iris.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
@@ -307,7 +314,7 @@
             </div>
             <!--column_3-->
             <div class="col-md-4 marginTop">
-                <h2>Header THREE</h2>
+                <h2>Time-Series</h2>
                 <p class="center"><img src="images/Btc_Vs_Eth.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
@@ -326,7 +333,7 @@
         </div>
         <!--title-->
         <div class="topRow" id="center">
-            <h1 class="center title"> Linear Regression</h1>
+            <h1 class="center title">Data Plots</h1>
             <p class="lead center"> details</p>
         </div>
 
@@ -334,7 +341,7 @@
         <div class="row marginBotton">
             <!--column_1-->
             <div class="col-md-4 marginTop">
-                <h2>Header ONE</h2>
+                <h2>GDP vs Amount of Arable Land</h2>
                 <p class="center"><img src="images/gdpVsAerable.jpg" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
@@ -343,7 +350,7 @@
             </div>
             <!--column_2-->
             <div class="col-md-4 marginTop">
-                <h2>Header ONE</h2>
+                <h2>GDP vs Perceived Corruption</h2>
                 <p class="center"><img src="images/gdpVsCpi.jpg" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
@@ -352,7 +359,7 @@
             </div>
             <!--column_3-->
             <div class="col-md-4 marginTop">
-                <h2>Header ONE</h2>
+                <h2>GDP vs Corruption and Land</h2>
                 <p class="center"><img src="images/threeVar.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
@@ -366,11 +373,11 @@
 
 
     <!-- Foooter -->
-    <div class="container contentContainer" id="footer" style="min-height: 930px, text-align: left;">
+    <div class="container contentContainer" id="footer">
         <div class="row">
-            <h1 class="center title">Contact Us</h1>
-            <p class="lead center">information@datadisplayed.net</p>
-            <p class="center"><img src="images/guitar.jpg" class="imageHolder"></p>
+            <h1 class="center title" style = "text-align: left;">Contact Us</h1>
+            <p class="lead center" style = "text-align: left;">information@datadisplayed.net</p>
+            <p class="center" style = "text-align: left;"><img src="images/guitar.jpg" class="imageHolder"></p>
         </div>
     </div>
 
@@ -381,14 +388,13 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
-    <script> $(".contentContainer").css("min-height",$(window).height());</script>
+    <script> $(".contentContainer").css("min-height",$(window).height());
 
-    <script>
     /*script to hide small nav on load*/
     $(document).ready(function() {
     console.log("BALLSipPAAmtTTTTTTTT"); 
     alert(ipPAAmt);
-    $('.navbar-collapse').show();        
+    /*$('.navbar-collapse').show();*/        
     });
 
     /*toggle visibility of hidden menu based on clicking*/
@@ -403,10 +409,8 @@
       $('.navbar-collapse').hide();
       active = false;
     }});
-    </script>
 
-    <script>
-    /*Scipt for code accordians*/
+   /*Scipt for code accordians*/
     var acc = document.getElementsByClassName("accordion");
     var i;
 

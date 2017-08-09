@@ -222,23 +222,26 @@
                 <p class="center"><img src="images/US_States_Life_Expectancy.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel" style="">
-                    <p>
+                    <div class =bold>
                         up <- map_data("state")<br>
                         file <-read_excel(path='C:/Users/pat/Desktop/mortality_risk.xlsx')<br>
                         file <- file[c('state','life__expectancy')]<br>
                         file <-na.omit(file)#remove missing data<br>
-                        file <- mutate(file, state = tolower(state))<br>
-                        head(file)<br>
+                        file <- mutate(file, state = tolower(state))</div>
+                        <div class = green>
+                        # comment </div>
+                        <div class = bold>
                         file$life__expectancy <- as.numeric(file$life__expectancy)<br>
-                        file$life__expectancy<br>
+                        file$life__expectancy</div>
+                        <div class = green>
+                        # comment </div>
+                        <div class = bold>
                         g <- ggplot()<br>
                         g <- g+geom_map(data = up, map = up, aes(x=long, y=lat, map_id=region), <br>
-                        fill="#ffffff", color="#ffffff", size=.15)
-
+                        fill="#ffffff", color="#ffffff", size=.15)<br>
                         g<br>
                         g <- g + geom_map(data=file, map=up, aes(fill=life__expectancy, map_id=state), color="#333333", size=0.15)<br>
-                        g<br>
-                    </p>
+                        g</div>
                 </div>
             </div>
             <!--column_3-->
@@ -247,24 +250,27 @@
                 <p class="center"><img src="images/US_Counties_Life_Expectancy.png" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
-                    <p>
+                    <div class = bold>
                         file <-read_excel(path='C:/Users/pat/Desktop/mortality_risk.xlsx')<br>
                         file <- file[c('_region', '_subregion','_life_expectancy')]<br>
                         names(file) <- c('subregion', 'region', 'life_expectancy')<br>
                         file <- mutate(file, region = tolower(region), subregion = tolower(subregion))<br>
                         file$life_expectancy <- as.numeric(file$life_expectancy)<br>
-                        summary(file)<br>
-                        # get map data for US counties<br>
-                        county_map <- map_data("county")<br>
-                        #merge mortality and county_map<br>
+                        summary(file)</div>
+                        <div class = green>
+                        # get map data for US counties</div>
+                        <div class = bold>
+                        county_map <- map_data("county")</div>
+                        <div class = green>
+                        #merge mortality and county_map</div>
+                        <div class = bold>
                         mortality_map <- merge(county_map, file, by.x=c("region", "subregion"), by.y=c("region", "subregion"), all.x=TRUE)<br>
                         mortality_map <- arrange(as.data.frame(mortality_map), group, order)<br>
                         up<-map_data("county")<br>
                         ggplot(mortality_map, aes(x=long, y=lat, group = group, fill = life_expectancy)) + <br>
                         geom_map(data=mortality_map, map=up, aes(fill = life_expectancy, map_id = region))+ <br>
                         geom_polygon()+ coord_map() + <br>
-                        scale_fill_gradientn("life__expectancy" ,colours=rev(brewer.pal(9,"YlOrRd")))<br>
-                    </p>
+                        scale_fill_gradientn("life__expectancy" ,colours=rev(brewer.pal(9,"YlOrRd")))</div>
                 </div>
             </div>
             <!--ends first row div-->
@@ -272,11 +278,11 @@
 
         <!--title-->
         <div class="topRow" id="center">
-            <h1 class="center title"> Time-Series</h1>
-            <p class="lead center"> details</p>
+            <h1 class="center title">Data Plots</h1>
+            <p class="lead left">&nbsp&nbsp;&nbsp;&nbsp&nbsp;The following three visualizations are examples of different ways to plot data.</p>
         </div>
 
-        <!-- time - series -->
+        <!-- Data Plots -->
         <div class="row marginBotton">
             <!--column_1-->
             <div class="col-md-4 marginTop">
@@ -284,18 +290,22 @@
                 <p class="center"><img src="images/Baseball.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
-                    <p>
-                        # Calculate correlation coeficient for the differnt explanatory variables and round to 3 decimal place<br>
-                        cors<-c(round(cor(batting$DOUBLE, batting$R), digits=3), round(cor(batting$TRIPLE, batting$R), digit=3), round(cor(batting$HR, batting$R), digits=3), round(cor(batting$SB, batting$R), digits=3))<br>
+                    <div class = green>
+                        # Calculate correlation coeficient for the differnt explanatory variables and round to 3 decimal place</div>
+                        <div class = bold>
+                        cors<-c(round(cor(batting$DOUBLE, batting$R), digits=3), round(cor(batting$TRIPLE, batting$R), digit=3), round(cor(batting$HR, batting$R), digits=3), round(cor(batting$SB, batting$R), digits=3))</div>
+                        <div class = green>
                         # Create plot of Runs ~ double, triples, home runs, and stolent bases so I can compare how each one correlates with number of runs scores<br>
-                        # I also split the data up abased on the american leauge and national leauge so I could see if there was any significant differece between the two<br>
+                        # I also split the data up abased on the american leauge and national leauge so I could see if there was any significant differece between the two</div>
+                        <div class = bold>
                         r_dub<-ggplot(batting, aes(x=DOUBLE, y = R, color=lgID)) + geom_point(alpha=.2) + geom_smooth(alpha=.3, size=1) + ggtitle("R~Doubles") + xlab(paste("r value = ", toString(cors[1]))) + ylab ("")<br>
                         r_trip<-ggplot(batting, aes(x=TRIPLE, y = R, color=lgID, lab="balls")) + geom_point(alpha=.2) + geom_smooth(alpha=.3, size=1) + ggtitle("R~Triples") + xlab(paste("r value = ", toString(cors[2]))) + ylab ("") <br>
                         r_hr<-ggplot(batting, aes(x=HR, y = R, color=lgID)) + geom_point(alpha=.2) + geom_smooth(alpha=.3, size=1) + ggtitle("R~Home Runs") + xlab(paste("r value = ", toString(cors[3]))) + ylab ("")<br>
-                        r_stolen<-ggplot(batting, aes(x=SB, y=R, color=lgID)) + geom_point(alpha=.2) + geom_smooth(alpha=.3, size=1) + ggtitle("R~Stolen Bases") + xlab(paste("r value = ", toString(cors[4]))) + ylab ("")<br>
-                        # Here I use multiplot to plot the different scatterplots in the same pane<br>
-                        multiplot(r_dub, r_trip, r_hr, r_stolen, cols =2)<br>
-                    </p>
+                        r_stolen<-ggplot(batting, aes(x=SB, y=R, color=lgID)) + geom_point(alpha=.2) + geom_smooth(alpha=.3, size=1) + ggtitle("R~Stolen Bases") + xlab(paste("r value = ", toString(cors[4]))) + ylab ("")</div>
+                        <div class = green>
+                        # Here I use multiplot to plot the different scatterplots in the same pane</div>
+                        <div class = bold>
+                        multiplot(r_dub, r_trip, r_hr, r_stolen, cols =2)</div>
                 </div>
             </div>
             <!--column_2-->
@@ -304,12 +314,11 @@
                 <p class="center"><img src="images/Iris.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
-                    <p>
+                    <div class = bold>
                         library(MASS)<br>
                         summary(iris)<br>
                         parcoord(iris[c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")], col = iris$Species)<br>
-                        jadslkfjasd;lkjfkl;dsajf<br>
-                    </p>
+                        jadslkfjasd;lkjfkl;dsajf</div>
                 </div>
             </div>
             <!--column_3-->
@@ -318,23 +327,21 @@
                 <p class="center"><img src="images/Btc_Vs_Eth.PNG" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
-                    <p>
+                    <div class = bold>
                         file <-read_excel(path='C:/Users/pat/Desktop/bothhh.xlsx')<br>
                         btc <- rainbow::fts(x = file$date, y = file$btc)<br>
                         eth <- rainbow::fts(x = file$date, y = file$eth)<br>
                         eth6 <- rainbow::fts(x = file$date, y = file$eth6)<br>
                         plot(btc, plot.type = "functions", plotlegend = TRUE, col="red")<br>
-                        lines(eth6, plot.type = "functions", plotlegend = TRUE, col="blue")<br>
-                        what the<br>
-                    </p>
+                        lines(eth6, plot.type = "functions", plotlegend = TRUE, col="blue</div>
                 </div>
             </div>
             <!--ends second row div-->
         </div>
         <!--title-->
         <div class="topRow" id="center">
-            <h1 class="center title">Data Plots</h1>
-            <p class="lead center"> details</p>
+            <h1 class="center title">Linear Regression</h1>
+            <p class="lead left">&nbsp&nbsp;&nbsp;&nbsp&nbsp;The three linear regression models were produced with a program called "Maple" which is quite good when working with symbols and linear algebra.</p>
         </div>
 
         <!-- linear regression -->
@@ -345,7 +352,7 @@
                 <p class="center"><img src="images/gdpVsAerable.jpg" class="imageHolder"></p>
                 <button class="accordion">CODE</button>
                 <div class="panel">
-                    <p>should be hidden but theNE IG SHOHFDNFMN DF DSKJFBKJSDNFJKNDSKJFNSDKJNFKJSDNFKJNSDKJFNSDKJNFKJSDNFKSJDNFKJSDNFKJNSDKJFNSDKJNFKJSDNFKJSDJNFKJNSDKJFNSDKJNFKJDSFN</p>
+                    <div class = bold></div>
                 </div>
             </div>
             <!--column_2-->
